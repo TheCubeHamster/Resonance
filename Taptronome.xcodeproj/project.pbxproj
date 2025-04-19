@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		DA0F64512DB42B930058336C /* Taptronome-Watch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = DA0F64312DB42B920058336C /* Taptronome-Watch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		DA0F64112DB41E3C0058336C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,12 +25,57 @@
 			remoteGlobalIDString = DA0F64022DB41E3B0058336C;
 			remoteInfo = Taptronome;
 		};
+		DA0F643E2DB42B930058336C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA0F63FB2DB41E3B0058336C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA0F64302DB42B920058336C;
+			remoteInfo = "Taptronome-Watch Watch App";
+		};
+		DA0F64482DB42B930058336C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA0F63FB2DB41E3B0058336C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA0F64302DB42B920058336C;
+			remoteInfo = "Taptronome-Watch Watch App";
+		};
+		DA0F644F2DB42B930058336C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA0F63FB2DB41E3B0058336C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA0F64302DB42B920058336C;
+			remoteInfo = "Taptronome-Watch Watch App";
+		};
+		DAF7AFC62DB42E3200849C2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA0F63FB2DB41E3B0058336C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA0F64022DB41E3B0058336C;
+			remoteInfo = Taptronome;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DA0F64552DB42B930058336C /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				DA0F64512DB42B930058336C /* Taptronome-Watch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DA0F64032DB41E3B0058336C /* Taptronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taptronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA0F64102DB41E3C0058336C /* TaptronomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaptronomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA0F641A2DB41E3C0058336C /* TaptronomeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaptronomeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA0F64312DB42B920058336C /* Taptronome-Watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Taptronome-Watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA0F643D2DB42B930058336C /* Taptronome-Watch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Taptronome-Watch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA0F64472DB42B930058336C /* Taptronome-Watch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Taptronome-Watch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -43,6 +92,21 @@
 		DA0F641D2DB41E3C0058336C /* TaptronomeUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = TaptronomeUITests;
+			sourceTree = "<group>";
+		};
+		DA0F64322DB42B920058336C /* Taptronome-Watch Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Taptronome-Watch Watch App";
+			sourceTree = "<group>";
+		};
+		DA0F64402DB42B930058336C /* Taptronome-Watch Watch AppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Taptronome-Watch Watch AppTests";
+			sourceTree = "<group>";
+		};
+		DA0F644A2DB42B930058336C /* Taptronome-Watch Watch AppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Taptronome-Watch Watch AppUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -69,6 +133,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DA0F642E2DB42B920058336C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA0F643A2DB42B930058336C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA0F64442DB42B930058336C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +163,9 @@
 				DA0F64052DB41E3B0058336C /* Taptronome */,
 				DA0F64132DB41E3C0058336C /* TaptronomeTests */,
 				DA0F641D2DB41E3C0058336C /* TaptronomeUITests */,
+				DA0F64322DB42B920058336C /* Taptronome-Watch Watch App */,
+				DA0F64402DB42B930058336C /* Taptronome-Watch Watch AppTests */,
+				DA0F644A2DB42B930058336C /* Taptronome-Watch Watch AppUITests */,
 				DA0F64042DB41E3B0058336C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +176,9 @@
 				DA0F64032DB41E3B0058336C /* Taptronome.app */,
 				DA0F64102DB41E3C0058336C /* TaptronomeTests.xctest */,
 				DA0F641A2DB41E3C0058336C /* TaptronomeUITests.xctest */,
+				DA0F64312DB42B920058336C /* Taptronome-Watch Watch App.app */,
+				DA0F643D2DB42B930058336C /* Taptronome-Watch Watch AppTests.xctest */,
+				DA0F64472DB42B930058336C /* Taptronome-Watch Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,10 +193,12 @@
 				DA0F63FF2DB41E3B0058336C /* Sources */,
 				DA0F64002DB41E3B0058336C /* Frameworks */,
 				DA0F64012DB41E3B0058336C /* Resources */,
+				DA0F64552DB42B930058336C /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DA0F64502DB42B930058336C /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				DA0F64052DB41E3B0058336C /* Taptronome */,
@@ -163,6 +256,75 @@
 			productReference = DA0F641A2DB41E3C0058336C /* TaptronomeUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		DA0F64302DB42B920058336C /* Taptronome-Watch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA0F64522DB42B930058336C /* Build configuration list for PBXNativeTarget "Taptronome-Watch Watch App" */;
+			buildPhases = (
+				DA0F642D2DB42B920058336C /* Sources */,
+				DA0F642E2DB42B920058336C /* Frameworks */,
+				DA0F642F2DB42B920058336C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				DA0F64322DB42B920058336C /* Taptronome-Watch Watch App */,
+			);
+			name = "Taptronome-Watch Watch App";
+			packageProductDependencies = (
+			);
+			productName = "Taptronome-Watch Watch App";
+			productReference = DA0F64312DB42B920058336C /* Taptronome-Watch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DA0F643C2DB42B930058336C /* Taptronome-Watch Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA0F64562DB42B930058336C /* Build configuration list for PBXNativeTarget "Taptronome-Watch Watch AppTests" */;
+			buildPhases = (
+				DA0F64392DB42B930058336C /* Sources */,
+				DA0F643A2DB42B930058336C /* Frameworks */,
+				DA0F643B2DB42B930058336C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DA0F643F2DB42B930058336C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				DA0F64402DB42B930058336C /* Taptronome-Watch Watch AppTests */,
+			);
+			name = "Taptronome-Watch Watch AppTests";
+			packageProductDependencies = (
+			);
+			productName = "Taptronome-Watch Watch AppTests";
+			productReference = DA0F643D2DB42B930058336C /* Taptronome-Watch Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DA0F64462DB42B930058336C /* Taptronome-Watch Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA0F64592DB42B930058336C /* Build configuration list for PBXNativeTarget "Taptronome-Watch Watch AppUITests" */;
+			buildPhases = (
+				DA0F64432DB42B930058336C /* Sources */,
+				DA0F64442DB42B930058336C /* Frameworks */,
+				DA0F64452DB42B930058336C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DA0F64492DB42B930058336C /* PBXTargetDependency */,
+				DAF7AFC72DB42E3200849C2B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				DA0F644A2DB42B930058336C /* Taptronome-Watch Watch AppUITests */,
+			);
+			name = "Taptronome-Watch Watch AppUITests";
+			packageProductDependencies = (
+			);
+			productName = "Taptronome-Watch Watch AppUITests";
+			productReference = DA0F64472DB42B930058336C /* Taptronome-Watch Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +346,17 @@
 						CreatedOnToolsVersion = 16.3;
 						TestTargetID = DA0F64022DB41E3B0058336C;
 					};
+					DA0F64302DB42B920058336C = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					DA0F643C2DB42B930058336C = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = DA0F64302DB42B920058336C;
+					};
+					DA0F64462DB42B930058336C = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = DA0F64302DB42B920058336C;
+					};
 				};
 			};
 			buildConfigurationList = DA0F63FE2DB41E3B0058336C /* Build configuration list for PBXProject "Taptronome" */;
@@ -203,6 +376,9 @@
 				DA0F64022DB41E3B0058336C /* Taptronome */,
 				DA0F640F2DB41E3C0058336C /* TaptronomeTests */,
 				DA0F64192DB41E3C0058336C /* TaptronomeUITests */,
+				DA0F64302DB42B920058336C /* Taptronome-Watch Watch App */,
+				DA0F643C2DB42B930058336C /* Taptronome-Watch Watch AppTests */,
+				DA0F64462DB42B930058336C /* Taptronome-Watch Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +399,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DA0F64182DB41E3C0058336C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA0F642F2DB42B920058336C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA0F643B2DB42B930058336C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA0F64452DB42B930058336C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,6 +450,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DA0F642D2DB42B920058336C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA0F64392DB42B930058336C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA0F64432DB42B930058336C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -265,6 +483,26 @@
 			isa = PBXTargetDependency;
 			target = DA0F64022DB41E3B0058336C /* Taptronome */;
 			targetProxy = DA0F641B2DB41E3C0058336C /* PBXContainerItemProxy */;
+		};
+		DA0F643F2DB42B930058336C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA0F64302DB42B920058336C /* Taptronome-Watch Watch App */;
+			targetProxy = DA0F643E2DB42B930058336C /* PBXContainerItemProxy */;
+		};
+		DA0F64492DB42B930058336C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA0F64302DB42B920058336C /* Taptronome-Watch Watch App */;
+			targetProxy = DA0F64482DB42B930058336C /* PBXContainerItemProxy */;
+		};
+		DA0F64502DB42B930058336C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA0F64302DB42B920058336C /* Taptronome-Watch Watch App */;
+			targetProxy = DA0F644F2DB42B930058336C /* PBXContainerItemProxy */;
+		};
+		DAF7AFC72DB42E3200849C2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA0F64022DB41E3B0058336C /* Taptronome */;
+			targetProxy = DAF7AFC62DB42E3200849C2B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -405,6 +643,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -433,6 +672,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -454,7 +694,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6VFC3TJKTC;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackdavis.TaptronomeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -473,7 +713,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6VFC3TJKTC;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackdavis.TaptronomeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -491,6 +731,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6VFC3TJKTC;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackdavis.TaptronomeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -508,6 +749,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6VFC3TJKTC;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackdavis.TaptronomeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -515,6 +757,142 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Taptronome;
+			};
+			name = Release;
+		};
+		DA0F64532DB42B930058336C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6VFC3TJKTC;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Taptronome-Watch";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.hackdavis.Taptronome;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hackdavis.Taptronome.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		DA0F64542DB42B930058336C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6VFC3TJKTC;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Taptronome-Watch";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.hackdavis.Taptronome;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hackdavis.Taptronome.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+		DA0F64572DB42B930058336C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6VFC3TJKTC;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hackdavis.Taptronome-Watch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taptronome-Watch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Taptronome-Watch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		DA0F64582DB42B930058336C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6VFC3TJKTC;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hackdavis.Taptronome-Watch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taptronome-Watch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Taptronome-Watch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+		DA0F645A2DB42B930058336C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6VFC3TJKTC;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hackdavis.Taptronome-Watch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Taptronome-Watch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		DA0F645B2DB42B930058336C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6VFC3TJKTC;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hackdavis.Taptronome-Watch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Taptronome-Watch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Release;
 		};
@@ -553,6 +931,33 @@
 			buildConfigurations = (
 				DA0F642B2DB41E3C0058336C /* Debug */,
 				DA0F642C2DB41E3C0058336C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA0F64522DB42B930058336C /* Build configuration list for PBXNativeTarget "Taptronome-Watch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA0F64532DB42B930058336C /* Debug */,
+				DA0F64542DB42B930058336C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA0F64562DB42B930058336C /* Build configuration list for PBXNativeTarget "Taptronome-Watch Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA0F64572DB42B930058336C /* Debug */,
+				DA0F64582DB42B930058336C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA0F64592DB42B930058336C /* Build configuration list for PBXNativeTarget "Taptronome-Watch Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA0F645A2DB42B930058336C /* Debug */,
+				DA0F645B2DB42B930058336C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
