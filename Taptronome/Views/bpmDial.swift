@@ -33,7 +33,7 @@ struct bpmDial: View {
                             .onChanged(onDrag(value:))
                         )
                     Text("\(Int(modelData.bpm))")
-                        .font(.system(size: 72))
+                        .font(Font.custom("Instrument Sans", size: 72))
                         .bold()
                         .onChange(of: angleValue) { oldValue, newValue in
                             var delta: Double = 0.0

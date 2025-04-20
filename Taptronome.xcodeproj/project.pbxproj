@@ -89,21 +89,15 @@
 		DA542A1D2DB4F1A20014FD68 /* Exceptions for "Taptronome" folder in "Taptronome-Watch Watch AppUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				dingTrim.mp3,
 				Fonts/Inter.ttf,
-				"move-check.mp3",
-				"move-self.mp3",
 			);
 			target = DA0F64462DB42B930058336C /* Taptronome-Watch Watch AppUITests */;
 		};
 		DA9CD7662DB47052002C7382 /* Exceptions for "Taptronome" folder in "TaptronomeTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				dingTrim.mp3,
 				Fonts/Inter.ttf,
 				ModelData.swift,
-				"move-check.mp3",
-				"move-self.mp3",
 				Views/BeatVisualizer.swift,
 			);
 			target = DA0F640F2DB41E3C0058336C /* TaptronomeTests */;
@@ -111,11 +105,8 @@
 		DA9CD7672DB47052002C7382 /* Exceptions for "Taptronome" folder in "TaptronomeUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				dingTrim.mp3,
 				Fonts/Inter.ttf,
 				ModelData.swift,
-				"move-check.mp3",
-				"move-self.mp3",
 				Views/BeatVisualizer.swift,
 			);
 			target = DA0F64192DB41E3C0058336C /* TaptronomeUITests */;
@@ -123,11 +114,8 @@
 		DA9CD7682DB47052002C7382 /* Exceptions for "Taptronome" folder in "Taptronome-Watch Watch App" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				dingTrim.mp3,
 				Fonts/Inter.ttf,
 				ModelData.swift,
-				"move-check.mp3",
-				"move-self.mp3",
 				Views/BeatVisualizer.swift,
 			);
 			target = DA0F64302DB42B920058336C /* Taptronome-Watch Watch App */;
@@ -135,11 +123,8 @@
 		DA9CD7692DB47052002C7382 /* Exceptions for "Taptronome" folder in "Taptronome-Watch Watch AppTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				dingTrim.mp3,
 				Fonts/Inter.ttf,
 				ModelData.swift,
-				"move-check.mp3",
-				"move-self.mp3",
 				Views/BeatVisualizer.swift,
 			);
 			target = DA0F643C2DB42B930058336C /* Taptronome-Watch Watch AppTests */;

@@ -123,7 +123,7 @@ struct ContentView: View {
                     }) {
                         Text("\(Int(modelData.bpm))")
                             .padding()
-                            .font(.system(size: 72))
+                            .font(Font.custom("Instrument Sans", size: 72))
                             .bold()
                             .foregroundColor(.white)
                     }
@@ -145,7 +145,7 @@ struct ContentView: View {
                             isTimeSigEditing.toggle()
                         }) {
                             Text("\(modelData.timeSignature[0])\n\(modelData.timeSignature[1])")
-                                .font(Font.custom("Inter", size: 20).weight(.bold))
+                                .font(Font.custom("Instrument Sans", size: 20).weight(.bold))
                                 .foregroundColor(.white)
                         }
                         .padding()
@@ -167,7 +167,7 @@ struct ContentView: View {
                         })
                         {
                             Text(modelData.isVibrating ? "Stop" : "Start")
-                                .font(Font.custom("Inter", size: 20).weight(.bold))
+                                .font(Font.custom("Instrument Sans", size: 20).weight(.bold))
                                 .padding()
                                 .frame(width: 150, height: 60)
                                 .foregroundStyle(.white)
