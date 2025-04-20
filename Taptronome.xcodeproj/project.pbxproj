@@ -837,9 +837,10 @@
 				DEVELOPMENT_TEAM = 6VFC3TJKTC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Taptronome-Watch";
+				INFOPLIST_KEY_CFBundleDisplayName = Resonance;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.hackdavis.Taptronome;
+				INFOPLIST_KEY_WKSupportsLiveActivityLaunchAttributeTypes = "\"\"";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -866,9 +867,10 @@
 				DEVELOPMENT_TEAM = 6VFC3TJKTC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Taptronome-Watch";
+				INFOPLIST_KEY_CFBundleDisplayName = Resonance;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.hackdavis.Taptronome;
+				INFOPLIST_KEY_WKSupportsLiveActivityLaunchAttributeTypes = "\"\"";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

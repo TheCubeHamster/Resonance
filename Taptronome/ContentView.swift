@@ -19,9 +19,7 @@ struct ContentView: View {
     @State private var isEditing = false
     @State private var isTimeSigEditing = false
     
-    @StateObject private var ding = SoundPlayer()
-    @StateObject private var bigClick = SoundPlayer()
-    @StateObject private var smallClick = SoundPlayer()
+    @StateObject private var sounds = SoundPlayer()
     
     @State private var selection: Tab = .metronome
     
@@ -41,9 +39,7 @@ struct ContentView: View {
             print("There was an error creating the engine: \(error.localizedDescription)")
         }
         
-        ding.preloadSound(filename: "dingTrim")
-        bigClick.preloadSound(filename: "move-check")
-        smallClick.preloadSound(filename: "move-self")
+        sounds.preloadSounds()
     }
     
     func hardClick() {
@@ -73,10 +69,10 @@ struct ContentView: View {
         }
         
         if (modelData.currentBeat == modelData.timeSignature[0]) {
-            ding.playSound(vol: Float(modelData.volume))
+            sounds.playSound(sound: 0, vol: Float(modelData.volume))
         }
         else {
-            bigClick.playSound(vol: Float(modelData.volume))
+            sounds.playSound(sound: 1, vol: Float(modelData.volume))
         }
         
         if (modelData.currentBeat % modelData.timeSignature[0] == 0) {
@@ -99,13 +95,13 @@ struct ContentView: View {
         // make sure that the device supports haptics
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
         var events = [CHHapticEvent]()
-
+        
         // create one intense, sharp tap
         let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: Float(modelData.vibStrength))
         let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
         let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0, duration: 0.035)
         events.append(event)
-
+        
         // convert those events into a pattern and play it immediately
         do {
             let pattern = try CHHapticPattern(events: events, parameters: [])
@@ -115,7 +111,7 @@ struct ContentView: View {
             print("Failed to play pattern: \(error.localizedDescription).")
         }
         modelData.currentSubDivision += 1
-        smallClick.playSound(vol: Float(modelData.volume))
+        sounds.playSound(sound: 2, vol: Float(modelData.volume))
     }
 
     var body: some View {
@@ -174,8 +170,7 @@ struct ContentView: View {
                                 .onChange(of: modelData.timeSignature) {
                                     modelData.generateBeatIcons()
                                 }
-                                //                        Text("Subdivision: \(modelData.currentSubDivision)")
-                                //
+//                                Text("Subdivisions: \(modelData.subDivisions)")
                                 //                        Spacer()
                                 //                        Text("Volume: \(modelData.volume)")
                                 //

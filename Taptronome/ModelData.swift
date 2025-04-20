@@ -34,11 +34,12 @@ class ModelData {
     
     var beatIcons: [beatIcon] = []
     
+    var numDivisions: Int = 3
     var subDivisions: [Int] = []
     
     init() {
         generateBeatIcons()
-        generateSubdivisions(sd: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])
+        generateSubdivisions(val: 2)
     }
     
     func generateBeatIcons() {
@@ -49,9 +50,10 @@ class ModelData {
         }
     }
     
-    func generateSubdivisions(sd: [Int]) {
-        for i in 0..<sd.count {
-            subDivisions.append(sd[i])
+    func generateSubdivisions(val: Int) {
+        subDivisions.removeAll()
+        for _ in 0..<12 {
+            subDivisions.append(val)
         }
     }
 }

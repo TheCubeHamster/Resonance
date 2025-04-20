@@ -21,7 +21,7 @@ struct ContentView: View {
     @State private var timer: Timer?
     @State private var isVibrating: Bool = false
     @State private var timeSignature: [Int] = [4, 4]
-    @State private var bpm: Int = 180
+    @State private var bpm: Double = 180
     @State private var subBeat: Int = 0
     @State private var circleBeat: Int = 0
     @State private var numCircles = 4
@@ -50,8 +50,13 @@ struct ContentView: View {
                         Button(action: {
                             isVibrating.toggle()
                             WKInterfaceDevice.current().play(WKHapticType.success)
+                            if isVibrating {
+                                startVibration()
+                            } else {
+                                stopVibration()
+                            }
                         }) {
-                            Text("\(bpm)")
+                            Text("\(Int(bpm))")
                                 .frame(width: radius, height: radius)
                                 .foregroundColor(Color.white)
                                 .background(Color(hue: circle.hue, saturation: circle.saturation, brightness: circleBeat > circle.index ? circle.highBrightness : circle.lowBrightness))
@@ -61,6 +66,7 @@ struct ContentView: View {
                         .buttonStyle(.plain)
                         .zIndex(Double(numCircles - circle.index))
                         .shadow(color: Color.black.opacity(0.5), radius: 4, x: 0, y: 0)
+                        .focusable()
                     } else {
                         Circle()
                             .fill(Color(hue: circle.hue, saturation: circle.saturation, brightness: circleBeat > circle.index ? circle.highBrightness : circle.lowBrightness))
@@ -71,15 +77,10 @@ struct ContentView: View {
                     }
                 }
             }
+            .focusable(true)
+            .digitalCrownRotation($bpm, from: 60.0, through: 300.0, by: 1.0, sensitivity: .low, isHapticFeedbackEnabled: true)
             .onChange(of: timeSignature) {
                 numCircles = timeSignature[0]
-            }
-            .onChange(of: isVibrating) { oldState, isVibrating in
-                if isVibrating && timer == nil {
-                    startVibration()
-                } else {
-                    stopVibration()
-                }
             }
         }
         .background(backgroundColor)
@@ -87,7 +88,7 @@ struct ContentView: View {
 
     private func startVibration() {
         circleBeat = 0
-        timer = Timer.scheduledTimer(withTimeInterval: Double(60.0) / Double(bpm), repeats: true) { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: Double(60.0) / Double(Int(bpm)), repeats: true) { _ in
             let click: WKHapticType
             circleBeat += 1
             if circleBeat >= timeSignature[1] {

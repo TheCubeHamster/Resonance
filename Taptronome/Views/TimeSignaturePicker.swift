@@ -56,6 +56,7 @@ struct TimeSignaturePicker: View {
     }
 
     var body: some View {
+        @Bindable var modelData = modelData
         GeometryReader { geometry in
             VStack(spacing: 20) {
                 // Display HStack (Unchanged)
@@ -120,10 +121,30 @@ struct TimeSignaturePicker: View {
                          if modelData.timeSignature[1] != newValue { modelData.timeSignature[1] = newValue }
                     }
                 )
-
-                Spacer()
+                HStack {
+                    Text("Subdivisions:")
+                        .font(Font.custom("Instrument Sans", size: 24))
+                        .bold()
+                        .foregroundStyle(.white)
+                        
+                    Picker("Subdivisions", selection: $modelData.numDivisions) {
+                        ForEach(1...5, id: \.self) { index in
+                            Text("\(index)")
+                                .font(Font.custom("Instrument Sans", size: 24))
+                                .foregroundStyle(.white)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .onChange(of: modelData.numDivisions) {
+                        modelData.generateSubdivisions(val: modelData.numDivisions - 1)
+                    }
+                }
+                .padding(.horizontal, 30)
+                .padding(.vertical, 30)
+                    
                 Spacer()
             }
+                
             // Geometry/Background/Overlay/onChange (Unchanged)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(hue: 0, saturation: 0, brightness: 0.13))
@@ -143,6 +164,7 @@ struct TimeSignaturePicker: View {
                         }
                     }
             )
+
             .onChange(of: geometry.size) { _, newSize in // ... unchanged ... }
                  DispatchQueue.main.async {
                      scrollViewWidth = newSize.width
