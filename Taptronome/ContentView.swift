@@ -23,6 +23,14 @@ struct ContentView: View {
     @StateObject private var bigClick = SoundPlayer()
     @StateObject private var smallClick = SoundPlayer()
     
+    @State private var selection: Tab = .metronome
+    
+    enum Tab {
+        case featured
+        case metronome
+        case settings
+    }
+    
     func prepareHaptics() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
 
@@ -112,101 +120,115 @@ struct ContentView: View {
 
     var body: some View {
         @Bindable var modelData = modelData
-        
-        NavigationView {
-            ZStack {
-                BeatVisualizer()
+        ZStack{
+            if (selection == .featured) {
+                Featured()
                 VStack {
                     Spacer()
-                    Button(action: {
-                        isEditing.toggle()
-                    }) {
-                        Text("\(Int(modelData.bpm))")
-                            .padding()
-                            .font(Font.custom("Instrument Sans", size: 72))
-                            .bold()
-                            .foregroundColor(.white)
-                    }
-                    .buttonStyle(.automatic)
-                    .sheet(isPresented: $isEditing) {
-                        bpmDial()
-                            .environment(modelData)
-                    }
-                    .onChange(of: modelData.bpm) {
-                        if (modelData.isVibrating) {
-                            updateBPM()
-                        }
-                    }
-                    
-                    HStack {
-                        // Time Signature Picker
-                        Spacer()
-                        Button(action: {
-                            isTimeSigEditing.toggle()
-                        }) {
-                            Text("\(modelData.timeSignature[0])\n\(modelData.timeSignature[1])")
-                                .font(Font.custom("Instrument Sans", size: 20).weight(.bold))
-                                .foregroundColor(.white)
-                        }
-                        .padding()
-                        .sheet(isPresented: $isTimeSigEditing) {
-                            TimeSignaturePicker()
-                        }
-                        .onChange(of: modelData.timeSignature) {
-                            modelData.generateBeatIcons()
-                        }
-//                        Text("Subdivision: \(modelData.currentSubDivision)")
-//
-//                        Spacer()
-//                        Text("Volume: \(modelData.volume)")
-//                        
-//                        // Start/Stop Button
-                        Spacer()
-                        Button(action: {
-                            modelData.isVibrating.toggle()
-                        })
-                        {
-                            Text(modelData.isVibrating ? "Stop" : "Start")
-                                .font(Font.custom("Instrument Sans", size: 20).weight(.bold))
+                    TabBar(selection: $selection)
+                        .padding(.horizontal, 50)
+                }
+            }
+            
+            else if (selection == .metronome) {
+                NavigationView {
+                    ZStack {
+                        BeatVisualizer()
+                        VStack {
+                            Spacer()
+                            Button(action: {
+                                isEditing.toggle()
+                            }) {
+                                Text("\(Int(modelData.bpm))")
+                                    .padding()
+                                    .font(Font.custom("Instrument Sans", size: 72))
+                                    .bold()
+                                    .foregroundColor(.white)
+                                    .padding(.bottom, -30)
+                            }
+                            .buttonStyle(.automatic)
+                            .sheet(isPresented: $isEditing) {
+                                bpmDial()
+                                    .environment(modelData)
+                            }
+                            .onChange(of: modelData.bpm) {
+                                if (modelData.isVibrating) {
+                                    updateBPM()
+                                }
+                            }
+                            
+                            HStack {
+                                // Time Signature Picker
+                                Spacer()
+                                Button(action: {
+                                    isTimeSigEditing.toggle()
+                                }) {
+                                    Text("\(modelData.timeSignature[0])\n\(modelData.timeSignature[1])")
+                                        .font(Font.custom("Instrument Sans", size: 20).weight(.bold))
+                                        .foregroundColor(.white)
+                                }
                                 .padding()
-                                .frame(width: 150, height: 60)
-                                .foregroundStyle(.white)
-                                .background(.black)
-                                .cornerRadius(50)
-                        }
-                        .onAppear(perform: prepareHaptics)
-                        .onChange(of: modelData.isVibrating) {
-                            if (modelData.isVibrating) {
-                                startVibration()
-                            } else {
-                                stopVibration()
+                                .sheet(isPresented: $isTimeSigEditing) {
+                                    TimeSignaturePicker()
+                                }
+                                .onChange(of: modelData.timeSignature) {
+                                    modelData.generateBeatIcons()
+                                }
+                                //                        Text("Subdivision: \(modelData.currentSubDivision)")
+                                //
+                                //                        Spacer()
+                                //                        Text("Volume: \(modelData.volume)")
+                                //
+                                //                        // Start/Stop Button
+                                Spacer()
+                                Button(action: {
+                                    modelData.isVibrating.toggle()
+                                })
+                                {
+                                    Text(modelData.isVibrating ? "Stop" : "Start")
+                                        .font(Font.custom("Instrument Sans", size: 20).weight(.bold))
+                                        .padding()
+                                        .frame(width: 150, height: 60)
+                                        .foregroundStyle(.white)
+                                        .background(.black)
+                                        .cornerRadius(50)
+                                }
+                                .onAppear(perform: prepareHaptics)
+                                .onChange(of: modelData.isVibrating) {
+                                    if (modelData.isVibrating) {
+                                        startVibration()
+                                    } else {
+                                        stopVibration()
+                                    }
+                                }
+                                Spacer()
+                                
+                                // Volume Control
+                                NavigationLink(destination: ConfigSliders())
+                                {
+                                    Image("sound_max")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 40, height: 40) // Adjust size as needed
+                                        .foregroundColor(.white)
+                                }
+                                
+                                Spacer()
                             }
+                            .padding(10)
+                            
+                            TabBar(selection: $selection)
+                                .padding(.horizontal, 50)
                         }
-                        Spacer()
-
-                        // Volume Control
-                        NavigationLink(destination: ConfigSliders())
-                        {
-                            Image("sound_max")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 40, height: 40) // Adjust size as needed
-                                .foregroundColor(.white)
-                        }
-                        
-                        Spacer()
                     }
-                    .padding(10)
-                    
-                    // Menu Bar
-                    /*
-                    TabView(padding: 25) {
-                        ContentView() {
-                            .tabItem {
-                                Label("Music Selector", "music_icon")
-                            }
-                        }
-                    }*/
+                }
+            }
+            else if (selection == .settings) {
+                Settings()
+                VStack {
+                    Spacer()
+                    TabBar(selection: $selection)
+                        .padding(.horizontal, 50)
                 }
             }
         }
