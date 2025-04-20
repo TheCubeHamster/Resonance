@@ -137,9 +137,7 @@ struct ContentView: View {
                         .sheet(isPresented: $isTimeSigEditing) {
                             TimeSignaturePicker()
                         }
-                    Text("Subdivision: \(modelData.currentSubDivision)")
-                    Spacer()
-                    Text("Time Signature: \(modelData.timeSignature[0])/\(modelData.timeSignature[1])")
+                        Text("Subdivision: \(modelData.currentSubDivision)")
                         
                         // Start/Stop Button
                         Spacer()
@@ -148,10 +146,9 @@ struct ContentView: View {
                         })
                         {
                             Text(modelData.isVibrating ? "Stop" : "Start")
-                                .padding([.leading, .trailing], 50)
-                                .padding([.top, .bottom], 17)
                                 .font(Font.custom("Inter", size: 20).weight(.bold))
-                                .foregroundColor(.white)
+                                .padding()
+                                .foregroundStyle(.white)
                                 .background(.black)
                                 .cornerRadius(50)
                         }

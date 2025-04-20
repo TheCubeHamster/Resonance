@@ -86,9 +86,17 @@
 			);
 			target = DA0F64022DB41E3B0058336C /* Taptronome */;
 		};
+		DA542A1D2DB4F1A20014FD68 /* Exceptions for "Taptronome" folder in "Taptronome-Watch Watch AppUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Fonts/Inter.ttf,
+			);
+			target = DA0F64462DB42B930058336C /* Taptronome-Watch Watch AppUITests */;
+		};
 		DA9CD7662DB47052002C7382 /* Exceptions for "Taptronome" folder in "TaptronomeTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Fonts/Inter.ttf,
 				ModelData.swift,
 				Views/BeatVisualizer.swift,
 			);
@@ -97,6 +105,7 @@
 		DA9CD7672DB47052002C7382 /* Exceptions for "Taptronome" folder in "TaptronomeUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Fonts/Inter.ttf,
 				ModelData.swift,
 				Views/BeatVisualizer.swift,
 			);
@@ -105,6 +114,7 @@
 		DA9CD7682DB47052002C7382 /* Exceptions for "Taptronome" folder in "Taptronome-Watch Watch App" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Fonts/Inter.ttf,
 				ModelData.swift,
 				Views/BeatVisualizer.swift,
 			);
@@ -113,6 +123,7 @@
 		DA9CD7692DB47052002C7382 /* Exceptions for "Taptronome" folder in "Taptronome-Watch Watch AppTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Fonts/Inter.ttf,
 				ModelData.swift,
 				Views/BeatVisualizer.swift,
 			);
@@ -129,6 +140,7 @@
 				DA9CD7672DB47052002C7382 /* Exceptions for "Taptronome" folder in "TaptronomeUITests" target */,
 				DA9CD7682DB47052002C7382 /* Exceptions for "Taptronome" folder in "Taptronome-Watch Watch App" target */,
 				DA9CD7692DB47052002C7382 /* Exceptions for "Taptronome" folder in "Taptronome-Watch Watch AppTests" target */,
+				DA542A1D2DB4F1A20014FD68 /* Exceptions for "Taptronome" folder in "Taptronome-Watch Watch AppUITests" target */,
 			);
 			path = Taptronome;
 			sourceTree = "<group>";
