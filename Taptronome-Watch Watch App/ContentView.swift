@@ -74,7 +74,7 @@ struct ContentView: View {
             .onChange(of: timeSignature) {
                 numCircles = timeSignature[0]
             }
-            .onChange(of: isVibrating) { isVibrating in
+            .onChange(of: isVibrating) { oldState, isVibrating in
                 if isVibrating && timer == nil {
                     startVibration()
                 } else {
