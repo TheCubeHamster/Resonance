@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var engine: CHHapticEngine?
     @State private var timer: Timer?
     // @State private var selection: TabView
+    @State private var subTimer: Timer?
     @State private var isEditing = false
     @State private var isTimeSigEditing = false
     
@@ -62,6 +63,36 @@ struct ContentView: View {
         else {
             modelData.currentBeat += 1
         }
+        
+        modelData.currentSubDivision = 0
+        
+        subTimer?.invalidate()
+        subTimer = nil
+        subTimer = Timer.scheduledTimer(withTimeInterval: 60.0 / Double(Int(modelData.bpm)) / (Double(modelData.subDivisions[modelData.currentBeat - 1]) + 1.0), repeats: true) { _ in
+            softClick()
+        }
+    }
+    
+    func softClick() {
+        // make sure that the device supports haptics
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        var events = [CHHapticEvent]()
+
+        // create one intense, sharp tap
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
+        let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0, duration: 0.035)
+        events.append(event)
+
+        // convert those events into a pattern and play it immediately
+        do {
+            let pattern = try CHHapticPattern(events: events, parameters: [])
+            let player = try engine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+        } catch {
+            print("Failed to play pattern: \(error.localizedDescription).")
+        }
+        modelData.currentSubDivision += 1
             
     }
 
@@ -105,7 +136,9 @@ struct ContentView: View {
                         .sheet(isPresented: $isTimeSigEditing) {
                             TimeSignaturePicker()
                         }
-                        
+                    Text("Subdivision: \(modelData.currentSubDivision)")
+                    Spacer()
+                    Text("Time Signature: \(modelData.timeSignature[0])/\(modelData.timeSignature[1])")
                         
                         Spacer()
                         // Start/Stop Button
@@ -157,6 +190,7 @@ struct ContentView: View {
 
     private func startVibration() {
         modelData.currentBeat = 1
+        modelData.currentSubDivision = 0
         modelData.isVibrating = true
         timer = Timer.scheduledTimer(withTimeInterval: 60.0 / Double(Int(modelData.bpm)), repeats: true) { _ in
             hardClick()
@@ -164,6 +198,8 @@ struct ContentView: View {
     }
     
     private func updateBPM() {
+        subTimer?.invalidate()
+        subTimer = nil
         timer?.invalidate()
         timer = nil
         timer = Timer.scheduledTimer(withTimeInterval: 60.0 / Double(Int(modelData.bpm)), repeats: true) { _ in
@@ -175,6 +211,8 @@ struct ContentView: View {
         modelData.isVibrating = false
         timer?.invalidate()
         timer = nil
+        subTimer?.invalidate()
+        subTimer = nil
     }
 }
 
