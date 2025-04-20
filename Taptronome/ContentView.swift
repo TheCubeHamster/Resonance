@@ -15,7 +15,9 @@ struct ContentView: View {
     
     @State private var engine: CHHapticEngine?
     @State private var timer: Timer?
+    // @State private var selection: TabView
     @State private var isEditing = false
+    @State private var isTimeSigEditing = false
     
     func prepareHaptics() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
@@ -66,67 +68,89 @@ struct ContentView: View {
     var body: some View {
         @Bindable var modelData = modelData
         
-        ZStack {
-            BeatVisualizer()
-            VStack {
-                Spacer()
-                Button(action: {
-                    isEditing.toggle()
-                }) {
-                    Text("\(Int(modelData.bpm))")
-                        .padding()
-                        .font(.system(size: 72))
-                        .bold()
-                }
-                .buttonStyle(.automatic)
-                .sheet(isPresented: $isEditing) {
-                    bpmDial()
-                        .environment(modelData)
-                }
-                .onChange(of: modelData.bpm) {
-                    if (modelData.isVibrating) {
-                        updateBPM()
-                    }
-                }
-                    
-                HStack {
-                    Button(action: {
-                        modelData.isVibrating.toggle()
-                    })
-                    {
-                        Text(modelData.isVibrating ? "Stop" : "Start")
-                            .padding()
-                            .background(modelData.isVibrating ? Color.red : Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                    }
-                    .onAppear(perform: prepareHaptics)
-                    .onChange(of: modelData.isVibrating) {
-                        if (modelData.isVibrating) {
-                            startVibration()
-                        } else {
-                            stopVibration()
-                        }
-                    }
-                    
-                    Picker("Number of Beats", selection: $modelData.timeSignature[0], content: {
-                        ForEach(2...12, id: \.self) { i in
-                            Text("\(i)")
-                        }
-                    })
-                    .onChange(of: modelData.timeSignature[0]) {
-                        modelData.generateBeatIcons()
-                    }
-                    .pickerStyle(.wheel)
-                    .frame(width: 80, height: 80)
-                }
-                HStack {
-                    Text("Current Beat: \(modelData.currentBeat)")
+        NavigationView {
+            ZStack {
+                BeatVisualizer()
+                VStack {
                     Spacer()
-                    Text("Time Signature: \(modelData.timeSignature[0])/\(modelData.timeSignature[1])")
+                    Button(action: {
+                        isEditing.toggle()
+                    }) {
+                        Text("\(Int(modelData.bpm))")
+                            .padding()
+                            .font(.system(size: 72))
+                            .bold()
+                    }
+                    .buttonStyle(.automatic)
+                    .sheet(isPresented: $isEditing) {
+                        bpmDial()
+                            .environment(modelData)
+                    }
+                    .onChange(of: modelData.bpm) {
+                        if (modelData.isVibrating) {
+                            updateBPM()
+                        }
+                    }
+                    
+                    HStack(spacing: 10) {
+                        Spacer()
+                        // Time Signature Picker
+                        Button(action: {
+                            isTimeSigEditing.toggle()
+                        }) {
+                            Text("\(modelData.timeSignature[0])\n\(modelData.timeSignature[1])")
+                                .font(Font.custom("Inter", size: 20).weight(.bold))
+                            
+                        }
+                        .sheet(isPresented: $isTimeSigEditing) {
+                            TimeSignaturePicker()
+                        }
                         
+                        
+                        Spacer()
+                        // Start/Stop Button
+                        Button(action: {
+                            modelData.isVibrating.toggle()
+                        })
+                        {
+                            Text(modelData.isVibrating ? "Stop" : "Start")
+                                .font(Font.custom("Inter", size: 20).weight(.bold))
+                                .padding()
+                                .background(.gray)
+                                .foregroundColor(.white)
+                                .cornerRadius(50)
+                        }
+                        .onAppear(perform: prepareHaptics)
+                        .onChange(of: modelData.isVibrating) {
+                            if (modelData.isVibrating) {
+                                startVibration()
+                            } else {
+                                stopVibration()
+                            }
+                        }
+                        
+                        Spacer()
+                        // Volume Control
+                        NavigationLink(destination: VolumePicker()) {
+                            Image("sound_max")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 40, height: 40) // Adjust size as needed
+                                .foregroundColor(.white)
+                        }
+                        Spacer()
+                    }
+                    
+                    // Menu Bar
+                    /*
+                    TabView(padding: 25) {
+                        ContentView() {
+                            .tabItem {
+                                Label("Music Selector", "music_icon")
+                            }
+                        }
+                    }*/
                 }
-                .padding(.horizontal)
             }
         }
     }
