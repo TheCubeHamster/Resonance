@@ -20,6 +20,7 @@ class ModelData {
     var bpm: Double = 120.0
     var isVibrating: Bool = false
     var currentBeat: Int = 0
+    var currentSubDivision: Int = 0
     var timeSignature: [Int] = [4, 4] // Default to 4/4 time
     var subdivisions: Int = 1
     
@@ -30,8 +31,11 @@ class ModelData {
     
     var beatIcons: [beatIcon] = []
     
+    var subDivisions: [Int] = []
+    
     init() {
         generateBeatIcons()
+        generateSubdivisions(sd: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])
     }
     
     func generateBeatIcons() {
@@ -39,6 +43,12 @@ class ModelData {
         for i in 0...timeSignature[0] {
             let icon = beatIcon(index: i, color: .primary, filled: .red)
             beatIcons.append(icon)
+        }
+    }
+    
+    func generateSubdivisions(sd: [Int]) {
+        for i in 0..<sd.count {
+            subDivisions.append(sd[i])
         }
     }
 }
