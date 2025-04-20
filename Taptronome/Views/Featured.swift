@@ -9,7 +9,12 @@ import SwiftUI
 
 struct Featured: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geometry in
+            Image("SpotifySync")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .offset(y: -80)
+        }
     }
 }
 
