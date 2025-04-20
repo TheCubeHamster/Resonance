@@ -92,32 +92,34 @@ struct ContentView: View {
                         }
                     }
                     
-                    HStack(spacing: 10) {
-                        Spacer()
+                    HStack {
                         // Time Signature Picker
+                        Spacer()
                         Button(action: {
                             isTimeSigEditing.toggle()
                         }) {
                             Text("\(modelData.timeSignature[0])\n\(modelData.timeSignature[1])")
                                 .font(Font.custom("Inter", size: 20).weight(.bold))
-                            
+                                .foregroundColor(.white)
                         }
+                        .padding()
                         .sheet(isPresented: $isTimeSigEditing) {
                             TimeSignaturePicker()
                         }
                         
                         
-                        Spacer()
                         // Start/Stop Button
+                        Spacer()
                         Button(action: {
                             modelData.isVibrating.toggle()
                         })
                         {
                             Text(modelData.isVibrating ? "Stop" : "Start")
+                                .padding([.leading, .trailing], 50)
+                                .padding([.top, .bottom], 17)
                                 .font(Font.custom("Inter", size: 20).weight(.bold))
-                                .padding()
-                                .background(.gray)
                                 .foregroundColor(.white)
+                                .background(.black)
                                 .cornerRadius(50)
                         }
                         .onAppear(perform: prepareHaptics)
@@ -128,8 +130,8 @@ struct ContentView: View {
                                 stopVibration()
                             }
                         }
-                        
                         Spacer()
+
                         // Volume Control
                         NavigationLink(destination: VolumePicker()) {
                             Image("sound_max")
@@ -138,8 +140,10 @@ struct ContentView: View {
                                 .frame(width: 40, height: 40) // Adjust size as needed
                                 .foregroundColor(.white)
                         }
+                        
                         Spacer()
                     }
+                    .padding(10)
                     
                     // Menu Bar
                     /*
