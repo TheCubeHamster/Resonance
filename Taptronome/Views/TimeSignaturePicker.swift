@@ -35,7 +35,7 @@ extension View { // ... unchanged ... }
 // --- Main View ---
 struct TimeSignaturePicker: View {
     @Environment(ModelData.self) var modelData
-    let signaturesData = Array(1...12)
+    let signaturesData = Array(2...12)
     let beatsData = [2, 4, 8]
     @State private var signatureItems: [SignatureItem]
     @State private var beatItems: [BeatItem]

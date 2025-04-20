@@ -125,6 +125,7 @@ struct ContentView: View {
                             .padding()
                             .font(.system(size: 72))
                             .bold()
+                            .foregroundColor(.white)
                     }
                     .buttonStyle(.automatic)
                     .sheet(isPresented: $isEditing) {
@@ -151,12 +152,15 @@ struct ContentView: View {
                         .sheet(isPresented: $isTimeSigEditing) {
                             TimeSignaturePicker()
                         }
-                        Text("Subdivision: \(modelData.currentSubDivision)")
-                        
-                        Spacer()
-                        Text("Volume: \(modelData.volume)")
-                        
-                        // Start/Stop Button
+                        .onChange(of: modelData.timeSignature) {
+                            modelData.generateBeatIcons()
+                        }
+//                        Text("Subdivision: \(modelData.currentSubDivision)")
+//
+//                        Spacer()
+//                        Text("Volume: \(modelData.volume)")
+//                        
+//                        // Start/Stop Button
                         Spacer()
                         Button(action: {
                             modelData.isVibrating.toggle()
@@ -165,6 +169,7 @@ struct ContentView: View {
                             Text(modelData.isVibrating ? "Stop" : "Start")
                                 .font(Font.custom("Inter", size: 20).weight(.bold))
                                 .padding()
+                                .frame(width: 150, height: 60)
                                 .foregroundStyle(.white)
                                 .background(.black)
                                 .cornerRadius(50)
