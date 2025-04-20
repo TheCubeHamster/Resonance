@@ -29,6 +29,9 @@ class ModelData {
     var startBrightness: Double = 0.67
     var endBrightness: Double = 0.25
     
+    var volume: Double = 0.5
+    var vibStrength: Double = 1.0
+    
     var beatIcons: [beatIcon] = []
     
     var subDivisions: [Int] = []

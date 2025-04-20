@@ -9,7 +9,6 @@ import SwiftUI
 import CoreHaptics
 
 
-
 struct ContentView: View {
     @Environment(ModelData.self) var modelData
     
@@ -20,6 +19,10 @@ struct ContentView: View {
     @State private var isEditing = false
     @State private var isTimeSigEditing = false
     
+    @StateObject private var ding = SoundPlayer()
+    @StateObject private var bigClick = SoundPlayer()
+    @StateObject private var smallClick = SoundPlayer()
+    
     func prepareHaptics() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
 
@@ -29,6 +32,10 @@ struct ContentView: View {
         } catch {
             print("There was an error creating the engine: \(error.localizedDescription)")
         }
+        
+        ding.preloadSound(filename: "dingTrim")
+        bigClick.preloadSound(filename: "move-check")
+        smallClick.preloadSound(filename: "move-self")
     }
     
     func hardClick() {
@@ -37,7 +44,7 @@ struct ContentView: View {
         var events = [CHHapticEvent]()
 
         // create one intense, sharp tap
-        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: Float(modelData.vibStrength))
         let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
         let event = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 0, duration: 0.035)
         events.append(event)
@@ -55,6 +62,13 @@ struct ContentView: View {
             try player?.start(atTime: 0)
         } catch {
             print("Failed to play pattern: \(error.localizedDescription).")
+        }
+        
+        if (modelData.currentBeat == modelData.timeSignature[0]) {
+            ding.playSound(vol: Float(modelData.volume))
+        }
+        else {
+            bigClick.playSound(vol: Float(modelData.volume))
         }
         
         if (modelData.currentBeat % modelData.timeSignature[0] == 0) {
@@ -79,7 +93,7 @@ struct ContentView: View {
         var events = [CHHapticEvent]()
 
         // create one intense, sharp tap
-        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: Float(modelData.vibStrength))
         let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
         let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0, duration: 0.035)
         events.append(event)
@@ -93,7 +107,7 @@ struct ContentView: View {
             print("Failed to play pattern: \(error.localizedDescription).")
         }
         modelData.currentSubDivision += 1
-            
+        smallClick.playSound(vol: Float(modelData.volume))
     }
 
     var body: some View {
@@ -139,6 +153,9 @@ struct ContentView: View {
                         }
                         Text("Subdivision: \(modelData.currentSubDivision)")
                         
+                        Spacer()
+                        Text("Volume: \(modelData.volume)")
+                        
                         // Start/Stop Button
                         Spacer()
                         Button(action: {
@@ -163,7 +180,8 @@ struct ContentView: View {
                         Spacer()
 
                         // Volume Control
-                        NavigationLink(destination: VolumePicker()) {
+                        NavigationLink(destination: ConfigSliders())
+                        {
                             Image("sound_max")
                                 .resizable()
                                 .scaledToFit()
