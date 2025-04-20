@@ -78,9 +78,50 @@
 		DA0F64472DB42B930058336C /* Taptronome-Watch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Taptronome-Watch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		DA9CD7662DB47052002C7382 /* Exceptions for "Taptronome" folder in "TaptronomeTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ModelData.swift,
+				Views/BeatVisualizer.swift,
+			);
+			target = DA0F640F2DB41E3C0058336C /* TaptronomeTests */;
+		};
+		DA9CD7672DB47052002C7382 /* Exceptions for "Taptronome" folder in "TaptronomeUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ModelData.swift,
+				Views/BeatVisualizer.swift,
+			);
+			target = DA0F64192DB41E3C0058336C /* TaptronomeUITests */;
+		};
+		DA9CD7682DB47052002C7382 /* Exceptions for "Taptronome" folder in "Taptronome-Watch Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ModelData.swift,
+				Views/BeatVisualizer.swift,
+			);
+			target = DA0F64302DB42B920058336C /* Taptronome-Watch Watch App */;
+		};
+		DA9CD7692DB47052002C7382 /* Exceptions for "Taptronome" folder in "Taptronome-Watch Watch AppTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ModelData.swift,
+				Views/BeatVisualizer.swift,
+			);
+			target = DA0F643C2DB42B930058336C /* Taptronome-Watch Watch AppTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		DA0F64052DB41E3B0058336C /* Taptronome */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				DA9CD7662DB47052002C7382 /* Exceptions for "Taptronome" folder in "TaptronomeTests" target */,
+				DA9CD7672DB47052002C7382 /* Exceptions for "Taptronome" folder in "TaptronomeUITests" target */,
+				DA9CD7682DB47052002C7382 /* Exceptions for "Taptronome" folder in "Taptronome-Watch Watch App" target */,
+				DA9CD7692DB47052002C7382 /* Exceptions for "Taptronome" folder in "Taptronome-Watch Watch AppTests" target */,
+			);
 			path = Taptronome;
 			sourceTree = "<group>";
 		};
@@ -643,7 +684,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -672,7 +713,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -694,7 +735,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6VFC3TJKTC;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackdavis.TaptronomeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -713,7 +754,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6VFC3TJKTC;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackdavis.TaptronomeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -731,7 +772,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6VFC3TJKTC;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackdavis.TaptronomeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -749,7 +790,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6VFC3TJKTC;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackdavis.TaptronomeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -785,7 +826,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.4;
 			};
 			name = Debug;
 		};
@@ -814,7 +855,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.4;
 			};
 			name = Release;
 		};
@@ -834,7 +875,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taptronome-Watch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Taptronome-Watch Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.4;
 			};
 			name = Debug;
 		};
@@ -854,7 +895,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taptronome-Watch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Taptronome-Watch Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.4;
 			};
 			name = Release;
 		};
@@ -873,7 +914,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_TARGET_NAME = "Taptronome-Watch Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.4;
 			};
 			name = Debug;
 		};
@@ -892,7 +933,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_TARGET_NAME = "Taptronome-Watch Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.4;
 			};
 			name = Release;
 		};

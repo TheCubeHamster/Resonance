@@ -11,10 +11,10 @@ import CoreHaptics
 
 
 struct ContentView: View {
+    @Environment(ModelData.self) var modelData
+    
     @State private var engine: CHHapticEngine?
-    @State private var isVibrating = false
     @State private var timer: Timer?
-    @State private var bpm_global = 60.0
     @State private var isEditing = false
     
     func prepareHaptics() {
@@ -41,9 +41,10 @@ struct ContentView: View {
         events.append(event)
         
         let start = CHHapticParameterCurve.ControlPoint(relativeTime: 0, value: 1)
+        let mid = CHHapticParameterCurve.ControlPoint(relativeTime: 0.02, value: 1)
         let end = CHHapticParameterCurve.ControlPoint(relativeTime: 0.035, value: 0)
         
-        let curve = CHHapticParameterCurve(parameterID: .hapticIntensityControl, controlPoints: [start, end], relativeTime: 0)
+        let curve = CHHapticParameterCurve(parameterID: .hapticIntensityControl, controlPoints: [start, mid, end], relativeTime: 0)
 
         // convert those events into a pattern and play it immediately
         do {
@@ -53,42 +54,57 @@ struct ContentView: View {
         } catch {
             print("Failed to play pattern: \(error.localizedDescription).")
         }
+        
+        if (modelData.currentBeat % modelData.timeSignature[1] == 0) {
+            modelData.currentBeat = 1
+        }
+        else {
+            modelData.currentBeat += 1
+        }
+            
     }
 
     var body: some View {
+        @Bindable var modelData = modelData
+        
         VStack {
+            BeatVisualizer()
             Slider(
-                value: $bpm_global,
+                value: $modelData.bpm,
                 in: 30...300,
                 step: 1,
                 onEditingChanged: { editing in
                     isEditing = editing
-                    updateBPM()
+                    if (modelData.isVibrating) {
+                        updateBPM()
+                    }
                 }
             )
-            Text("BPM: \(Int(bpm_global))")
+            Text("BPM: \(Int(modelData.bpm))")
                 .foregroundColor(isEditing ? .red : .blue)
             Button(action: {
-                if isVibrating {
+                if modelData.isVibrating {
                     stopVibration()
                 } else {
                     startVibration()
                 }
             }) {
-                Text(isVibrating ? "Stop" : "Start")
+                Text(modelData.isVibrating ? "Stop" : "Start")
                     .padding()
-                    .background(isVibrating ? Color.red : Color.blue)
+                    .background(modelData.isVibrating ? Color.red : Color.blue)
                     .foregroundColor(.white)
                     .cornerRadius(8)
             }
             .onAppear(perform: prepareHaptics)
+            Text("Current Beat: \(modelData.currentBeat)")
         }
         .padding()
     }
 
     private func startVibration() {
-        isVibrating = true
-        timer = Timer.scheduledTimer(withTimeInterval: 60.0 / Double(Int(bpm_global)), repeats: true) { _ in
+        modelData.currentBeat = 1
+        modelData.isVibrating = true
+        timer = Timer.scheduledTimer(withTimeInterval: 60.0 / Double(Int(modelData.bpm)), repeats: true) { _ in
             hardClick()
         }
     }
@@ -96,13 +112,13 @@ struct ContentView: View {
     private func updateBPM() {
         timer?.invalidate()
         timer = nil
-        timer = Timer.scheduledTimer(withTimeInterval: 60.0 / Double(Int(bpm_global)), repeats: true) { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 60.0 / Double(Int(modelData.bpm)), repeats: true) { _ in
             hardClick()
         }
     }
 
     private func stopVibration() {
-        isVibrating = false
+        modelData.isVibrating = false
         timer?.invalidate()
         timer = nil
     }
@@ -110,4 +126,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environment(ModelData())
 }
