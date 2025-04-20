@@ -35,7 +35,6 @@ struct ContentView: View {
 
         // create one intense, sharp tap
         let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
-        //let curve = CHHapticParameterCurve(parameterID: .hapticSharpnessControl, controlPoints: [CHHapticParameterCurve.ControlPoint(relativeTime: 0, value: 1), CHHapticParameterCurve.ControlPoint(relativeTime: 0.5, value: 0)], relativeTime: 0)
         let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
         let event = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 0, duration: 0.035)
         events.append(event)
@@ -55,7 +54,7 @@ struct ContentView: View {
             print("Failed to play pattern: \(error.localizedDescription).")
         }
         
-        if (modelData.currentBeat % modelData.timeSignature[1] == 0) {
+        if (modelData.currentBeat % modelData.timeSignature[0] == 0) {
             modelData.currentBeat = 1
         }
         else {
@@ -67,38 +66,69 @@ struct ContentView: View {
     var body: some View {
         @Bindable var modelData = modelData
         
-        VStack {
+        ZStack {
             BeatVisualizer()
-            Slider(
-                value: $modelData.bpm,
-                in: 30...300,
-                step: 1,
-                onEditingChanged: { editing in
-                    isEditing = editing
+            VStack {
+                Spacer()
+                Button(action: {
+                    isEditing.toggle()
+                }) {
+                    Text("\(Int(modelData.bpm))")
+                        .padding()
+                        .font(.system(size: 72))
+                        .bold()
+                }
+                .buttonStyle(.automatic)
+                .sheet(isPresented: $isEditing) {
+                    bpmDial()
+                        .environment(modelData)
+                }
+                .onChange(of: modelData.bpm) {
                     if (modelData.isVibrating) {
                         updateBPM()
                     }
                 }
-            )
-            Text("BPM: \(Int(modelData.bpm))")
-                .foregroundColor(isEditing ? .red : .blue)
-            Button(action: {
-                if modelData.isVibrating {
-                    stopVibration()
-                } else {
-                    startVibration()
+                    
+                HStack {
+                    Button(action: {
+                        modelData.isVibrating.toggle()
+                    })
+                    {
+                        Text(modelData.isVibrating ? "Stop" : "Start")
+                            .padding()
+                            .background(modelData.isVibrating ? Color.red : Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                    }
+                    .onAppear(perform: prepareHaptics)
+                    .onChange(of: modelData.isVibrating) {
+                        if (modelData.isVibrating) {
+                            startVibration()
+                        } else {
+                            stopVibration()
+                        }
+                    }
+                    
+                    Picker("Number of Beats", selection: $modelData.timeSignature[0], content: {
+                        ForEach(2...12, id: \.self) { i in
+                            Text("\(i)")
+                        }
+                    })
+                    .onChange(of: modelData.timeSignature[0]) {
+                        modelData.generateBeatIcons()
+                    }
+                    .pickerStyle(.wheel)
+                    .frame(width: 80, height: 80)
                 }
-            }) {
-                Text(modelData.isVibrating ? "Stop" : "Start")
-                    .padding()
-                    .background(modelData.isVibrating ? Color.red : Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
+                HStack {
+                    Text("Current Beat: \(modelData.currentBeat)")
+                    Spacer()
+                    Text("Time Signature: \(modelData.timeSignature[0])/\(modelData.timeSignature[1])")
+                        
+                }
+                .padding(.horizontal)
             }
-            .onAppear(perform: prepareHaptics)
-            Text("Current Beat: \(modelData.currentBeat)")
         }
-        .padding()
     }
 
     private func startVibration() {

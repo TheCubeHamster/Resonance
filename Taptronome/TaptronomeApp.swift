@@ -13,7 +13,7 @@ struct TaptronomeApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(ModelData())
+                .environment(modelData)
         }
     }
 }

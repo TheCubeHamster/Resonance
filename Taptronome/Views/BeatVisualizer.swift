@@ -7,29 +7,23 @@
 
 import SwiftUI
 
-struct beatIcon: Identifiable {
-    var index: Int
-    var color: Color
-    var filled: Color
-    let id = UUID()
-}
-
 struct BeatVisualizer: View {
     @Environment(ModelData.self) var modelData
-    @State private var beatCircles: [beatIcon] = [
-        beatIcon(index: 0, color: .primary, filled: .red),
-        beatIcon(index: 1, color: .primary, filled: .red),
-        beatIcon(index: 2, color: .primary, filled: .red),
-        beatIcon(index: 3, color: .primary, filled: .red),
-    ]
     
     var body: some View {
         GeometryReader { geometry in
-            ForEach(beatCircles) { circle in
+            ForEach(modelData.beatIcons, id: \.self) { circle in
+                let radius = geometry.size.height * (0.3 + (CGFloat(circle.index) * 0.3 / CGFloat(modelData.timeSignature[0])))
                 Circle()
-                    .stroke(circle.index < modelData.currentBeat ? circle.filled : circle.color)
-                    .position(x: geometry.size.width / 2, y: CGFloat(circle.index + 1) * geometry.size.height / CGFloat(modelData.timeSignature[0]) + (geometry.size.height * 0.3))
-                    .frame(width: geometry.size.width * CGFloat(circle.index + 1), height: geometry.size.width * CGFloat(circle.index + 1))
+                    .stroke(.white)
+                    .fill(Color(hue: modelData.hue, saturation: modelData.saturation, brightness: circle.index <= modelData.currentBeat && circle.index != 0 ? modelData.startBrightness : 0.0))
+//                    .hueRotation(Angle(degrees: modelData.hue))
+//                    .saturation(modelData.saturation)
+//                    .brightness(circle.index <= modelData.currentBeat ? modelData.startBrightness : 0)
+                    .position(x: geometry.size.width / 2, y: geometry.size.height * 1.2 - radius)
+                    .frame(width: radius * 2, height: radius * 2)
+                    .shadow(color: .black, radius: 4, x: 0, y: 4)
+                    .zIndex(Double(modelData.beatIcons.count - circle.index))
             }
         }
     }
